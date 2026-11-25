@@ -1,0 +1,153 @@
+{
+  "policy": {
+    "entries": [
+      {
+        "id": "x7",
+        "path": "banks/east.dat",
+        "file": "base.bin"
+      }
+    ],
+    "edge_capacity": {
+      "van": 36,
+      "foot": 32
+    },
+    "central_capacity": 80
+  },
+  "objects": {
+    "base.bin": {
+      "bytes": 15,
+      "sha256": "9b01d989693baba1a09f08191d8005248b86a5e08ded5dd1845ce5c842dc05bc"
+    },
+    "patch-a.bin": {
+      "bytes": 2,
+      "sha256": "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a"
+    },
+    "patch-b.bin": {
+      "bytes": 2,
+      "sha256": "624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4"
+    },
+    "late.bin": {
+      "bytes": 1,
+      "sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+    },
+    "replacement.bin": {
+      "bytes": 8,
+      "sha256": "9a84db62da8b63a1f6ad0afc8cc77244509f628e10cf4910c25f41c52bab4d4f"
+    }
+  },
+  "events": [
+    {
+      "at": 0,
+      "action": "checkout",
+      "client": "van",
+      "base": 5,
+      "until": 31
+    },
+    {
+      "at": 0,
+      "action": "checkout",
+      "client": "foot",
+      "base": 5,
+      "until": 22
+    },
+    {
+      "at": 1,
+      "action": "open",
+      "handle": "r5",
+      "id": "x7",
+      "until": 32
+    },
+    {
+      "at": 2,
+      "action": "rename",
+      "client": "van",
+      "seq": 1,
+      "id": "x7",
+      "path": "banks/east-old.dat"
+    },
+    {
+      "at": 3,
+      "action": "edit",
+      "client": "van",
+      "seq": 2,
+      "id": "x7",
+      "offset": 5,
+      "file": "patch-a.bin"
+    },
+    {
+      "at": 4,
+      "action": "edit",
+      "client": "foot",
+      "seq": 1,
+      "id": "x7",
+      "offset": 10,
+      "file": "patch-b.bin"
+    },
+    {
+      "at": 5,
+      "action": "integrate",
+      "client": "van"
+    },
+    {
+      "at": 6,
+      "action": "create",
+      "client": "van",
+      "seq": 3,
+      "id": "x8",
+      "path": "banks/east.dat",
+      "file": "replacement.bin"
+    },
+    {
+      "at": 7,
+      "action": "integrate",
+      "client": "van"
+    },
+    {
+      "at": 8,
+      "action": "integrate",
+      "client": "foot"
+    },
+    {
+      "at": 9,
+      "action": "truncate",
+      "client": "van",
+      "seq": 4,
+      "id": "x7",
+      "size": 8
+    },
+    {
+      "at": 10,
+      "action": "integrate",
+      "client": "van"
+    },
+    {
+      "at": 11,
+      "action": "edit",
+      "client": "foot",
+      "seq": 2,
+      "id": "x7",
+      "offset": 11,
+      "file": "late.bin"
+    },
+    {
+      "at": 23,
+      "action": "integrate",
+      "client": "foot"
+    },
+    {
+      "at": 24,
+      "action": "read",
+      "handle": "r5",
+      "offset": 8,
+      "length": 5
+    },
+    {
+      "at": 25,
+      "action": "resolve",
+      "client": "foot",
+      "seq": 2,
+      "action_result": "discard"
+    }
+  ],
+  "packets": []
+}

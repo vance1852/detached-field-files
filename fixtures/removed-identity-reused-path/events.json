@@ -1,0 +1,87 @@
+{
+  "policy": {
+    "entries": [
+      {
+        "id": "x1",
+        "path": "scan.dat",
+        "file": "old.bin"
+      }
+    ],
+    "edge_capacity": {
+      "s1": 24,
+      "s2": 24
+    },
+    "central_capacity": 40
+  },
+  "objects": {
+    "old.bin": {
+      "bytes": 8,
+      "sha256": "962f85a27854336f3286ad54b49321f62525043b5f3508b2ecc887fdd6e7550e"
+    },
+    "new.bin": {
+      "bytes": 5,
+      "sha256": "477b172177e8a23b2b2c30cedaa19a2a4504ba4627ecae34b79bd7d1e08ac798"
+    },
+    "edit.bin": {
+      "bytes": 1,
+      "sha256": "8de0b3c47f112c59745f717a626932264c422a7563954872e237b223af4ad643"
+    }
+  },
+  "events": [
+    {
+      "at": 0,
+      "action": "checkout",
+      "client": "s1",
+      "base": 1,
+      "until": 20
+    },
+    {
+      "at": 0,
+      "action": "checkout",
+      "client": "s2",
+      "base": 1,
+      "until": 20
+    },
+    {
+      "at": 1,
+      "action": "unlink",
+      "client": "s1",
+      "seq": 1,
+      "id": "x1"
+    },
+    {
+      "at": 2,
+      "action": "create",
+      "client": "s1",
+      "seq": 2,
+      "id": "x2",
+      "path": "scan.dat",
+      "file": "new.bin"
+    },
+    {
+      "at": 3,
+      "action": "edit",
+      "client": "s2",
+      "seq": 1,
+      "id": "x1",
+      "offset": 2,
+      "file": "edit.bin"
+    },
+    {
+      "at": 4,
+      "action": "integrate",
+      "client": "s1"
+    },
+    {
+      "at": 5,
+      "action": "integrate",
+      "client": "s2"
+    },
+    {
+      "at": 6,
+      "action": "integrate",
+      "client": "s2"
+    }
+  ],
+  "packets": []
+}
